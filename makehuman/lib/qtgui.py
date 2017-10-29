@@ -2213,12 +2213,12 @@ class ZoomableImageView(QtGui.QScrollArea, Widget):
                 if scrollBar.maximum() > 0:
                     scrollBar.setValue(int(scrat[index] * scrollBar.maximum() + displ[index]))
 
-    def save(self, fname):
+    def save(self, fname, iformat=None):
         if not os.path.splitext(fname)[1]:
             fname = fname + '.png'
-
+        print('Debug  :', fname)
         if self.imageLabel.pixmap():
-            self.imageLabel.pixmap().save (fname)
+            self.imageLabel.pixmap().save(fname, format=iformat)
 
     def mousePressEvent(self, event):
         self.mdown = event.pos()

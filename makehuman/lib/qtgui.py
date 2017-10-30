@@ -2216,7 +2216,6 @@ class ZoomableImageView(QtGui.QScrollArea, Widget):
     def save(self, fname, iformat=None):
         if not os.path.splitext(fname)[1]:
             fname = fname + '.png'
-        print('Debug  :', fname)
         if self.imageLabel.pixmap():
             self.imageLabel.pixmap().save(fname, format=iformat)
 

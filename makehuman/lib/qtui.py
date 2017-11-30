@@ -49,7 +49,7 @@ else:
 import glmodule as gl
 import events3d
 import qtgui
-import queue
+import mhqueue
 import time
 import getpath
 
@@ -703,7 +703,7 @@ class Application(QtGui.QApplication, events3d.EventHandler):
         import debugdump
         debugdump.dump.appendQt()
 
-        self.messages = queue.Manager(self._postAsync)
+        self.messages = mhqueue.Manager(self._postAsync)
         self.mainwin = Frame(self, (G.windowWidth, G.windowHeight))
         self.statusBar = self.mainwin.statusBar
         self.progressBar = self.mainwin.progressBar

@@ -805,16 +805,22 @@ class Application(QtGui.QApplication, events3d.EventHandler):
         self._postAsync(AsyncEvent(func, args, kwargs))
 
 def getSaveFileName(directory, filter = "All files (*.*)"):
-    return str(QtGui.QFileDialog.getSaveFileName(
-        G.app.mainwin, directory = directory, filter = filter))
+    path = QtGui.QFileDialog.getSaveFileName(G.app.mainwin, directory = directory, filter = filter)
+    if isinstance(path, tuple):
+        path = path[0]
+    return path
 
 def getOpenFileName(directory, filter = "All files (*.*)"):
-    return str(QtGui.QFileDialog.getOpenFileName(
-        G.app.mainwin, directory = directory, filter = filter))
+    path = QtGui.QFileDialog.getOpenFileName(G.app.mainwin, directory = directory, filter = filter)
+    if isinstance(path, tuple):
+        path = path[0]
+    return path
 
 def getExistingDirectory(directory):
-    return str(QtGui.QFileDialog.getExistingDirectory(
-        G.app.mainwin, directory = directory))
+    path = QtGui.QFileDialog.getExistingDirectory(G.app.mainwin, directory = directory)
+    if isinstance(path, tuple):
+        path = path[0]
+    return path
 
 def setShortcut(modifier, key, action):
     action.setShortcut(QtGui.QKeySequence(modifier + key))
